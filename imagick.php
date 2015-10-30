@@ -9,12 +9,10 @@ thumb::$drivers['imagick'] = function($thumb) {
             $img = $img->coalesceImages();
 
             foreach ($img as $frame) {
-                // $frame->cropImage($crop_w, $crop_h, $crop_x, $crop_y); 
-                // $frame->thumbnailImage($size_w, $size_h); 
                 $dimensions = clone $thumb->source->dimensions();
                 $dimensions->fitWidthAndHeight($thumb->options['width'], $thumb->options['height'], $thumb->options['upscale']);
                 $frame->thumbnailImage($dimensions->width(), $dimensions->height(), true);
-                // $frame->setImagePage($size_w, $size_h, 0, 0); 
+                $frame->setImagePage($dimensions->width(), $dimensions->height(), 0, 0); 
             }
 
             $img = $img->optimizeImageLayers();
