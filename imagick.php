@@ -11,7 +11,7 @@ thumb::$drivers['imagick'] = function($thumb) {
             foreach ($img as $frame) {
                 $dimensions = clone $thumb->source->dimensions();
                 $dimensions->fitWidthAndHeight($thumb->options['width'], $thumb->options['height'], $thumb->options['upscale']);
-                $frame->thumbnailImage($dimensions->width(), $dimensions->height(), true);
+                $frame->thumbnailImage($dimensions->width(), $dimensions->height(), false);
                 $frame->setImagePage($dimensions->width(), $dimensions->height(), 0, 0); 
             }
 
